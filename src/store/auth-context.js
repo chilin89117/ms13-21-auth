@@ -11,16 +11,16 @@ const AuthContext = createContext({
 
 // get token from localStorage and see if it is still valid
 const getTokenFromStorage = () => {
-  const storedToken = localStorage.getItem('ms1321-token')
-  const storedExpTime = localStorage.getItem('ms1321-exp')
+  const storedToken = localStorage.getItem('ms1322-token')
+  const storedExpTime = localStorage.getItem('ms1322-exp')
   let expirationTime
   if (storedExpTime) expirationTime = parseInt(storedExpTime)
   else expirationTime = 0
   const remainingDuration = expirationTime - new Date().getTime()
   // if less than 10 seconds remains clear localStorage
   if (remainingDuration <= 10000) {
-    localStorage.removeItem('ms1321-token')
-    localStorage.removeItem('ms1321-exp')
+    localStorage.removeItem('ms1322-token')
+    localStorage.removeItem('ms1322-exp')
     return {storedToken: null, remainingDuration: 0}
   }
   return {storedToken, remainingDuration}
@@ -34,15 +34,15 @@ export const AuthContextProvider = ({children}) => {
   // use useCallback because of dependency in useEffect
   const signOutHandler = useCallback(() => {
     setIdToken(null)
-    localStorage.removeItem('ms1321-token')
-    localStorage.removeItem('ms1321-exp')
+    localStorage.removeItem('ms1322-token')
+    localStorage.removeItem('ms1322-exp')
     if (signOutTimer) clearTimeout(signOutTimer)
   }, [])
 
   const signInHandler = (token, expirationTime) => {
     setIdToken(token)
-    localStorage.setItem('ms1321-token', token)
-    localStorage.setItem('ms1321-exp', expirationTime.toString())
+    localStorage.setItem('ms1322-token', token)
+    localStorage.setItem('ms1322-exp', expirationTime.toString())
     const remainingDuration = expirationTime - new Date().getTime()
     // sign out automatically 10 seconds before token expires
     signOutTimer = setTimeout(signOutHandler, remainingDuration - 10000)
