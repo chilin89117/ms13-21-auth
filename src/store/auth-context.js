@@ -13,9 +13,8 @@ const AuthContext = createContext({
 const getTokenFromStorage = () => {
   const storedToken = localStorage.getItem('ms1322-token')
   const storedExpTime = localStorage.getItem('ms1322-exp')
-  let expirationTime
+  let expirationTime = 0
   if (storedExpTime) expirationTime = parseInt(storedExpTime)
-  else expirationTime = 0
   const remainingDuration = expirationTime - new Date().getTime()
   // if less than 10 seconds remains clear localStorage
   if (remainingDuration <= 10000) {

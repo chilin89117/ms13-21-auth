@@ -26,7 +26,8 @@ const ProfileForm = () => {
     })
     const data = await response.json()
     if (data.idToken) {
-      authCtx.signIn(data.idToken)
+      const expirationTime = new Date().getTime() + parseInt(data.expiresIn) * 1000
+      authCtx.signIn(data.idToken, expirationTime)
       console.log('[CHG PWD]: Success!')
       history.push('/')
     } else {

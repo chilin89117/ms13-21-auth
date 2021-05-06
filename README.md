@@ -15,6 +15,8 @@
 * ### Endpoint: https://identitytoolkit.googleapis.com/v1/accounts:update?key=[API_KEY]
 
 ## __4. `idToken` returned from Google__
+* ### Stored in app with `useContext`
+* ### Stored in browser with `localStorage`
 ```json
 {
   "iss": "https://securetoken.google.com/<project_id>",

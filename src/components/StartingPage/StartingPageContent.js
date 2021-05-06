@@ -1,11 +1,9 @@
-import classes from './StartingPageContent.module.css'
+import styles from './StartingPageContent.module.css'
 
-const StartingPageContent = () => {
-  return (
-    <section className={classes.starting}>
-      <h1>Welcome on Board!</h1>
-    </section>
-  )
-}
+const StartingPageContent = () => (
+  <section className={styles.starting}>
+    <h1>Welcome on Board!</h1>
+  </section>
+)
 
 export default StartingPageContent

@@ -22,9 +22,9 @@ const AuthForm = () => {
       return
     }
     setIsLoading(true)
-    let endpoint
-    if (signInMode) endpoint = process.env.REACT_APP_SIGNIN
-    else endpoint = process.env.REACT_APP_SIGNUP
+    let endpoint = process.env.REACT_APP_SIGNIN     // default signInMode is true
+    if (!signInMode) endpoint = process.env.REACT_APP_SIGNUP
+
     const response = await fetch(endpoint, {
       method: 'POST',
       body: JSON.stringify({email, password, returnSecureToken: true}),

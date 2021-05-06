@@ -1,12 +1,10 @@
 import MainNavigation from './MainNavigation'
 
-const Layout = ({children}) => {
-  return (
-    <>
-      <MainNavigation />
-      <main>{children}</main>
-    </>
-  )
-}
+const Layout = ({children}) => (
+  <>
+    <MainNavigation />
+    <main>{children}</main>
+  </>
+)
 
 export default Layout
